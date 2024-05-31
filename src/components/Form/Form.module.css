@@ -1,0 +1,45 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    row-gap: 10px;
+    margin-top: 20px;
+}
+
+.form label {
+    color: #fff;
+    font-weight: 400;
+}
+
+.form :is(input[type="text"], select, button[type="submit"]) {
+    padding: 10px;
+    outline: none;
+    border-radius: 5px;
+    background: none;
+    border: 3px solid #fff;
+    color: #fff;
+}
+
+.form input[type="text"]::placeholder {
+    color: #fff;
+}
+
+.form select:focus {
+    background: transparent;
+}
+
+.form select option {
+    color: #000;
+}
+
+.form button[type="submit"] {
+    background: none;
+    outline: none;
+    background-color: #F4940E;
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 10px;
+}

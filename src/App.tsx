@@ -1,10 +1,17 @@
 import styles from "./App.module.css";
+import Form from "./components/Form/Form";
 
 function App() {
 
   return (
     <>
-      <h1 className={styles.hola}>Buscador de Clima</h1>
+      <main>
+        <header>
+          <h1 className={styles.title}>Buscador de Clima</h1>
+        </header>
+        
+        <Form/>
+      </main>
     </>
   )
 }

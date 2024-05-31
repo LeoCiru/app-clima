@@ -10,11 +10,17 @@
 body {
     font-family: "Outfit", sans-serif;
     background-image: url(/public/bg_clima.jpg);
-    background-size: cover;
     background-repeat: no-repeat;
 }
 
-.titulo {
-    font-size: 1rem;
-    color: black;
+body main {
+    max-width: 1920px;
+    width: 90%;
+    margin: auto;
+}
+
+.title {
+    color: #fff;
+    text-align: center;
+    padding-top: 5vh;
 }

@@ -4,7 +4,11 @@ import { useState } from "react";
 import { SearchType } from "../../types";
 import Alert from "../Alert/Alert";
 
-function Form(){
+type FormProps = {
+    fetchWeather: (search: SearchType) => void,
+}
+
+function Form({fetchWeather} : FormProps){
     
     const [search, setSearch] = useState<SearchType>({
         city: '',
@@ -29,7 +33,8 @@ function Form(){
         }
 
         setAlert('');
-
+        
+        fetchWeather(search);
     }
 
 

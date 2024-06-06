@@ -1,4 +1,5 @@
 import { ReactNode } from "react"
+import styles from "./Alert.module.css"
 
 type AlertProps = {
     children: ReactNode
@@ -6,9 +7,9 @@ type AlertProps = {
 
 function Alert({children} : AlertProps) {
   return (
-    <h1>
+    <h3 className={styles.alertTitle}>
        {children} 
-    </h1>
+    </h3>
   )
 }
 

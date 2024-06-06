@@ -1,0 +1,9 @@
+.alertTitle {
+    width: 40%;
+    text-align: center;
+    color: #fff;
+    background-color: #242425;
+    padding: 20px;
+    border-radius: 5px;
+    text-transform: uppercase;
+}

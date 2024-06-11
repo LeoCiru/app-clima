@@ -6,7 +6,7 @@ import useWeather from "./hooks/useWeather";
 
 function App() {
 
-  const {fetchWeather, weather, notFound} = useWeather()
+  const {fetchWeather, weather, notFound, hasWeatherData} = useWeather()
 
   return (
     <>
@@ -22,9 +22,7 @@ function App() {
           
           {notFound && <Alert>No se encuentra esta ciudad</Alert>}
 
-          <WeatherDetail
-            weather={weather}
-          />
+          {hasWeatherData && <WeatherDetail weather={weather}/>}
         </div>
       </main>
     </>

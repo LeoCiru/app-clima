@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { SearchType } from "../types"
 import { z } from "zod"
 
@@ -34,6 +34,8 @@ function useWeather() {
 
         const urlGeo = `http://api.openweathermap.org/geo/1.0/direct?q=${search.city},${search.country}&appid=${appID}`
 
+        //Setting "weather" empty to not to have previous information on the state
+        setWeather(initialState);
         try {
             const response = await fetch(urlGeo);
             const data = await response.json();
@@ -61,13 +63,17 @@ function useWeather() {
         } catch (error) {
             console.log(error);
         }   
-    }
 
+      }
+      
+      //If weather.name has something, this returns "true"
+      const hasWeatherData = useMemo(() => weather.name, [weather])
 
   return{
     fetchWeather,
     weather,
-    notFound
+    notFound,
+    hasWeatherData
   }
 }
 

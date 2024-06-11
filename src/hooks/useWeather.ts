@@ -1,7 +1,33 @@
+import { useState } from "react";
 import { SearchType } from "../types"
+import { z } from "zod"
+
+//Creating schema to use Zod
+const WeatherSchema = z.object({
+  name: z.string(),
+  main: z.object({
+    temp: z.number(),
+    temp_min: z.number(),
+    temp_max: z.number()
+  })
+});
+
+//Infering the type with the Schema
+type WeatherType = z.infer<typeof WeatherSchema>;
+
+const initialState = {
+  name: '',
+  main: {
+    temp: 0,
+    temp_min: 0,
+    temp_max: 0
+  }
+}
 
 function useWeather() {
 
+  const [weather, setWeather] = useState<WeatherType>(initialState)
+  
     async function fetchWeather(search: SearchType) {
         const appID = import.meta.env.VITE_API_KEY
 
@@ -19,7 +45,13 @@ function useWeather() {
             const responseWeather = await fetch(urlWeather);
             const dataWeather = await responseWeather.json();
 
-            console.log(dataWeather);
+
+            const result = WeatherSchema.safeParse(dataWeather);
+            
+            if (result.success) {
+              setWeather(result.data);
+            }
+
         } catch (error) {
             console.log(error);
         }   
@@ -28,6 +60,7 @@ function useWeather() {
 
   return{
     fetchWeather,
+    weather
   }
 }
 

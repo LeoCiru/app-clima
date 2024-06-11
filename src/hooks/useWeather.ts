@@ -3,7 +3,7 @@ import { SearchType } from "../types"
 function useWeather() {
 
     async function fetchWeather(search: SearchType) {
-        const appID = "b768059f16202da32c4a439134bea124"
+        const appID = import.meta.env.VITE_API_KEY
 
         const urlGeo = `http://api.openweathermap.org/geo/1.0/direct?q=${search.city},${search.country}&appid=${appID}`
 
@@ -16,7 +16,10 @@ function useWeather() {
 
             const urlWeather = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${appID}`
 
-            console.log(urlWeather);
+            const responseWeather = await fetch(urlWeather);
+            const dataWeather = await responseWeather.json();
+
+            console.log(dataWeather);
         } catch (error) {
             console.log(error);
         }   

@@ -6,7 +6,6 @@ function App() {
 
   const {fetchWeather} = useWeather()
 
-
   return (
     <>
       <main>

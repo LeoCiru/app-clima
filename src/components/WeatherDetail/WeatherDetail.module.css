@@ -1,0 +1,14 @@
+.weatherDetail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: aliceblue;
+    padding: 50px 70px;
+    border-radius: 10px;
+}
+
+.weatherDetail .temp {
+    font-size: 4rem;
+    font-weight: 900;
+}

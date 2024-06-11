@@ -13,7 +13,7 @@ const WeatherSchema = z.object({
 });
 
 //Infering the type with the Schema
-type WeatherType = z.infer<typeof WeatherSchema>;
+export type WeatherType = z.infer<typeof WeatherSchema>;
 
 const initialState = {
   name: '',
@@ -27,6 +27,7 @@ const initialState = {
 function useWeather() {
 
   const [weather, setWeather] = useState<WeatherType>(initialState)
+  const [notFound, setNotFound] = useState(false);
   
     async function fetchWeather(search: SearchType) {
         const appID = import.meta.env.VITE_API_KEY
@@ -36,6 +37,11 @@ function useWeather() {
         try {
             const response = await fetch(urlGeo);
             const data = await response.json();
+
+            if (!data[0]) {
+              setNotFound(true);
+              return;
+            }
 
             const lat = data[0].lat;
             const lon = data[0].lon;
@@ -60,7 +66,8 @@ function useWeather() {
 
   return{
     fetchWeather,
-    weather
+    weather,
+    notFound
   }
 }
 

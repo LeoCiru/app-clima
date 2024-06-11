@@ -1,10 +1,12 @@
 import styles from "./App.module.css";
+import Alert from "./components/Alert/Alert";
 import Form from "./components/Form/Form";
+import WeatherDetail from "./components/WeatherDetail/WeatherDetail";
 import useWeather from "./hooks/useWeather";
 
 function App() {
 
-  const {fetchWeather} = useWeather()
+  const {fetchWeather, weather, notFound} = useWeather()
 
   return (
     <>
@@ -13,9 +15,17 @@ function App() {
           <h1 className={styles.title}>Buscador de Clima</h1>
         </header>
         
-        <Form
-          fetchWeather={fetchWeather}
-        />
+        <div className={styles.container}>
+          <Form
+            fetchWeather={fetchWeather}
+          />
+          
+          {notFound && <Alert>No se encuentra esta ciudad</Alert>}
+
+          <WeatherDetail
+            weather={weather}
+          />
+        </div>
       </main>
     </>
   )

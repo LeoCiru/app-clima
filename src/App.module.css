@@ -19,6 +19,13 @@ body main {
     margin: auto;
 }
 
+body main .container {
+    display: flex;
+    column-gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
 .title {
     color: #fff;
     text-align: center;

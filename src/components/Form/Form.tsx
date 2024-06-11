@@ -39,7 +39,7 @@ function Form({fetchWeather} : FormProps){
 
 
   return (
-    <>
+    <div className={styles.containerForm}>
         {alert && <Alert>{alert}</Alert>}
 
         <form
@@ -76,7 +76,7 @@ function Form({fetchWeather} : FormProps){
         
             <button type="submit">Consultar Clima</button>
         </form>
-    </>
+    </div>
   )
 }
 

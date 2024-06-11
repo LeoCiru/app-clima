@@ -26,8 +26,9 @@ const initialState = {
 
 function useWeather() {
 
-  const [weather, setWeather] = useState<WeatherType>(initialState)
+  const [weather, setWeather] = useState<WeatherType>(initialState);
   const [notFound, setNotFound] = useState(false);
+  const [loading, setLoading] = useState(false);
   
     async function fetchWeather(search: SearchType) {
         const appID = import.meta.env.VITE_API_KEY
@@ -36,6 +37,7 @@ function useWeather() {
 
         //Setting "weather" empty to not to have previous information on the state
         setWeather(initialState);
+        setLoading(true);
         try {
             const response = await fetch(urlGeo);
             const data = await response.json();
@@ -62,7 +64,9 @@ function useWeather() {
 
         } catch (error) {
             console.log(error);
-        }   
+        } finally {
+          setLoading(false);
+        }
 
       }
       
@@ -73,7 +77,8 @@ function useWeather() {
     fetchWeather,
     weather,
     notFound,
-    hasWeatherData
+    hasWeatherData,
+    loading
   }
 }
 

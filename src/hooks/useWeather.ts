@@ -33,9 +33,7 @@ function useWeather() {
     async function fetchWeather(search: SearchType) {
         const appID = import.meta.env.VITE_API_KEY
 
-        const urlGeo = `http://api.openweathermap.org/geo/1.0/direct?q=${search.city ? search.city.replace(' ', '%').toLowerCase() : search.city.toLowerCase},${search.country}&appid=${appID}`
-
-        console.log(urlGeo);
+        const urlGeo = `http://api.openweathermap.org/geo/1.0/direct?q=${search.city ? search.city.replace(/ /g, "%").toLowerCase() : search.city.toLowerCase},${search.country}&appid=${appID}`;
 
         //Setting "weather" empty to not to have previous information on the state
         setWeather(initialState);

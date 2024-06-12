@@ -17,8 +17,12 @@ function WeatherDetail({weather} : WeatherDetailProps) {
         </div>
 
         <div className={styles.temps}>
-            <p>Min: {kelvinToCelcius(weather.main.temp_min)}&deg;C</p>
-            <p>Min: {kelvinToCelcius(weather.main.temp_max)}&deg;C</p>
+            <div>
+                <p><span>Mín:</span> {kelvinToCelcius(weather.main.temp_min)}&deg;C</p>
+            </div>
+            <div>
+                <p><span>Máx:</span> {kelvinToCelcius(weather.main.temp_max)}&deg;C</p>
+            </div>
         </div>
     </div>
   )

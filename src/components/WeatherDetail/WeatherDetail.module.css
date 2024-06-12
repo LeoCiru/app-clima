@@ -12,3 +12,19 @@
     font-size: 4rem;
     font-weight: 900;
 }
+
+.weatherDetail .temps {
+    width: 100%;
+    /* margin-top: 20px; */
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.weatherDetail .temps div p {
+    display: block;
+    font-size: 1.2rem;
+}
+
+.weatherDetail .temps div p span {
+    font-weight: 600;
+}

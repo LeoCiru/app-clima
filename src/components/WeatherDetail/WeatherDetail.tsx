@@ -1,3 +1,4 @@
+import { kelvinToCelcius } from "../../helpers";
 import { WeatherType } from "../../hooks/useWeather"
 import styles from "./WeatherDetail.module.css";
 
@@ -12,12 +13,12 @@ function WeatherDetail({weather} : WeatherDetailProps) {
             <h2>Clima de: {weather.name}</h2>
         </div>
         <div>
-            <p className={styles.temp}>{weather.main.temp}&deg;C</p>
+            <p className={styles.temp}>{kelvinToCelcius(weather.main.temp)}&deg;C</p>
         </div>
 
         <div className={styles.temps}>
-            <p>Min: {weather.main.temp_min}&deg;C</p>
-            <p>Min: {weather.main.temp_max}&deg;C</p>
+            <p>Min: {kelvinToCelcius(weather.main.temp_min)}&deg;C</p>
+            <p>Min: {kelvinToCelcius(weather.main.temp_max)}&deg;C</p>
         </div>
     </div>
   )
